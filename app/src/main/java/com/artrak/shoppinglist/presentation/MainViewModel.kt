@@ -26,7 +26,8 @@ class MainViewModel : ViewModel() {
         val newItem = shopItem.copy(enable = !shopItem.enable)
         editShopItemUseCase.editShopItem(newItem)
     }
-    fun editing(shopItem: ShopItem){
+
+    fun editing(shopItem: ShopItem) {
         Log.d("MainViewModel", "editing - ${shopItem.id} ${shopItem.name}")
     }
 }
