@@ -28,26 +28,25 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         }
         val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
         buttonAddItem.setOnClickListener {
-            if (isOnePaneMode()){
+            if (isOnePaneMode()) {
                 val intent = ShopItemActivity.newIntentAddItem(this)
                 startActivity(intent)
-            }
-            else{
+            } else {
                 launchFragment(ShopItemFragment.newInstanceAddItem())
             }
         }
     }
 
-    override fun onEditingFinished(){
+    override fun onEditingFinished() {
         Toast.makeText(this@MainActivity, "Success", Toast.LENGTH_SHORT).show()
         supportFragmentManager.popBackStack()
     }
 
-    private fun isOnePaneMode(): Boolean{
+    private fun isOnePaneMode(): Boolean {
         return shopItemContainer == null
     }
 
-    private fun launchFragment(fragment: Fragment){
+    private fun launchFragment(fragment: Fragment) {
         supportFragmentManager.popBackStack()
         supportFragmentManager.beginTransaction()
             .replace(R.id.shop_item_container, fragment)
@@ -98,10 +97,10 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
 
     private fun setupClickListener() {
         shopListAdapter.onShopItemClickListener = {
-            if (isOnePaneMode()){
+            if (isOnePaneMode()) {
                 val intent = ShopItemActivity.newIntentEditItem(this, it.id)
                 startActivity(intent)
-            } else{
+            } else {
                 launchFragment(ShopItemFragment.newInstanceEditItem(it.id))
             }
         }
