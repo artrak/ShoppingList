@@ -34,6 +34,7 @@ class ShopItemFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("ShopItemFragment", "onCreate")
         super.onCreate(savedInstanceState)
+
         parseParams()
     }
 
