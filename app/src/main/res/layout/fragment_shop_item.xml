@@ -2,8 +2,8 @@
 <layout>
     <data>
         <variable
-            name="shopItem"
-            type="com.artrak.shoppinglist.domain.ShopItem" />
+            name="viewModel"
+            type="com.artrak.shoppinglist.presentation.ShopItemViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,6 +20,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
+            app:errorInputName="@{viewModel.errorInputName}"
             app:layout_constraintBottom_toTopOf="@id/til_count"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,8 +31,8 @@
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@{viewModel.shopItem.name}"
                 android:hint="Name:"
-                android:text="@{shopItem.name}"
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,6 +43,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
+            app:errorInputCount="@{viewModel.errorInputCount}"
             app:layout_constraintBottom_toTopOf="@+id/save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +53,7 @@
                 android:id="@+id/et_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{shopItem.count}"
+                android:text="@{String.valueOf(viewModel.shopItem.count)}"
                 android:hint="Count:"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
